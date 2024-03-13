@@ -1,0 +1,195 @@
+.App{
+  margin: 0%;
+  display: flex;
+}
+
+body{
+  background-color: rgb(42, 40, 40)
+}
+
+.displayArea{
+  display: flex;
+  flex-direction: row-reverse;
+  width:100vw;
+  height:100vh;
+  
+}
+
+.imageDisplayArea{
+  flex:4;
+  width:100vw;
+  /*background-color: red;*/
+}
+
+.topDisplayRow{
+  display: flex;
+  flex: 1;
+  height: 50%;
+  /*background-color: aliceblue;*/
+}
+
+.bottomDisplayRow{
+  display: flex;
+  flex: 1;
+  height: 50%;
+  /*background-color: aqua;*/
+}
+
+.leftTopDisplayArea{
+  
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  
+  /*background-color: blueviolet;*/
+}
+.rightTopDisplayArea{
+  flex:1;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  /*background-color: bisque;*/
+}
+
+.leftBottomDisplayArea{
+  
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  /*background-color: bisque;*/
+}
+.rightBottomDisplayArea{
+  flex:1;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  /*background-color: blueviolet;*/
+}
+
+
+.instructionArea{
+  flex:1;
+  width: 100vw;
+  /*background-color: blue;*/
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.instructionTitleArea{
+  display: flex;
+  flex:1;
+  background-color: azure;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.instructionTitleText{
+  font-size: xx-large;
+  color: black;
+}
+.instructionBodyArea{
+  display: flex;
+  flex: 4;
+  background-color: rgba(240, 255, 255, 0.758);
+  width: 100%;
+  flex-direction: column;
+}
+
+.instructionBeginningTitleBox{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructionBeginningTextBox{
+  display: flex;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructionProcedureTitleBox{
+  display: flex;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructionProcedureBox{
+  display: flex;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+}
+
+.methodInstructionText{
+  display: flex;
+  flex:1;
+  margin-left: 2%;
+  margin-right: 2%;
+  align-items: center;
+  justify-content: center;
+  font-size: small;
+}
+
+.exitingText{
+  display: flex;
+  flex: 1;
+  margin-left: 2%;
+  margin-right: 2%;
+  align-items: center;
+  justify-content: center;
+  font-size: small;
+}
+
+.beginningInstructionText{
+  display: flex;
+  flex: 1;
+  margin-left: 2%;
+  margin-right: 2%;
+  align-items: center;
+  justify-content: center;
+  font-size: small;
+}
+
+.instructionEndingTitleBox{
+  display: flex;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructionEndingTextBox{
+  display: flex;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+}
+
+.universityLogoBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex:1;
+}
+
+.universityLogo{
+  height: 10vh;
+  
+  display: flex;
+}
+
+.methodInstructionText{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}

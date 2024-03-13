@@ -1,0 +1,74 @@
+.imageCard{
+    align-items: center;
+    height:100%;
+    width:100%;
+    display:flex;
+}
+
+.leftNumberFrame{
+    height:100%;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.centralFrame{
+    height:100%;
+    flex:3;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column; 
+}
+.pictureFrame{
+    height:80%;
+    flex:3;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.rightNumberFrame{
+    height:100%;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.renderedImage{
+    height: 75%;
+    border-radius: 2vw 2vw 2vw 2vw;
+    display: flex;
+}
+.pictureNumber{
+    font-size:xx-large;
+    font-weight: bolder;
+    text-decoration: underline;
+    color: white;
+}
+
+.responseButton{
+    background-color: black;
+    border-radius: 0 0 2vw 2vw;
+    color: white;
+    height: 5vh;
+    width:10vw;
+    border-color: white;
+    
+}
+
+.responseButton:hover{
+    background-color: aliceblue;
+    color: black;
+    height: 5vh;
+    width:10vw;
+    border-color: aliceblue;
+}
+
+.responseButton:active{
+    background-color: gold;
+    border-color: aliceblue;
+}
