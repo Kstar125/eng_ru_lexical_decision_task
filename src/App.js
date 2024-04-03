@@ -25,13 +25,12 @@ const SESSION_LENGTH = 35
 let exclusionArray = ["Initialize Data Array"]
 
 //Firebase Declarations
+
 const usersCollectionRef = collection(db, "Users")
 
 const USER_ID = Math.random().toString(36).substring(2,8)
 
 //Project Declarations
-
-
 
 function App() {
 
@@ -39,22 +38,37 @@ function App() {
 
   let [cognateCount, setCognateCount] = useState(0);
 
+  /**
+   * updateCognateCount controls the state of cognateCount
+   * 
+   * Increment the recorded number of cognates chosen by session logic.
+   */
   const updateCognateCount = () => {
     setCognateCount(
       cognateCount = cognateCount + 1
     )
   }
 
-  
 
   let [nonCognateCount, setNonCognateCount] = useState(0);
 
+  /**
+   * updateNonCognateCount controls the state of nonCognateCount
+   * 
+   * Increment the recorded number of non-cognates chosen by session logic.
+   */
   const updateNonCognateCount = () => {
     setNonCognateCount(
       nonCognateCount = nonCognateCount + 1
     )
   }
 
+
+/**
+ * Choose the target session word and corresponding image for stimulus presentation.
+ * 
+ * @returns [int, int]
+ */
   const getChosenWord = () => {
     let wordChoiceIndex = Math.floor(Math.random() * 29);
     let arrayChoiceIndex = Math.floor(Math.random() * 2);
@@ -70,11 +84,11 @@ function App() {
     return [russianNonCognateList[wordChoiceIndex][0], russianNonCognateList[wordChoiceIndex][1]];
   }
   
-  //Initially creating a user
-
-  
   useEffect(() => {
     
+    /**
+     * newUser initializes session firebase database and hosting service connection.
+     */
     const newUser = async () => {
       await setDoc(doc(usersCollectionRef, USER_ID), { Name: "X" })
    
@@ -99,6 +113,14 @@ function App() {
 
   let [instanceReport, setInstanceReport] = useState();
 
+  /**
+   * generateInstance Report adds the participant chosen word, session target word, and time, as an entry to the session instance report.
+   * 
+   * @param {*} wordArray 
+   * @param {*} clickedWord 
+   * @param {*} chosenWord 
+   * @param {*} time 
+   */
   const generateInstanceReport = async (wordArray, clickedWord, chosenWord, time) => {
     setInstanceReport(
       instanceReport = [wordArray, clickedWord, chosenWord, time]
@@ -125,6 +147,11 @@ function App() {
 
   let [instanceCount, setInstanceCount] = useState(0);
 
+  /**
+   * updateInstanceCount controls the state of instanceCount.
+   * 
+   * Increment instanceCount each time a new target word is presented to a participant.
+   */
   const updateInstanceCount = () => {
     setInstanceCount(
       instanceCount = instanceCount + 1
@@ -134,12 +161,23 @@ function App() {
 
   let [startTime, setStartTime] = useState();
 
+  /**
+   * UpdateStartTime controls the react state for startTime.
+   */
   const updateStartTime = () => {
     setStartTime(
       startTime = new Date()
     );
   }
 
+  /**
+   * getQueryWordIndex chooses the appropriate index corresponding to the session target word.
+   * 
+   * @param {*} queryWord 
+   * @param {*} cognateArray 
+   * @param {*} nonCognateArray 
+   * @returns int
+   */
   const getQueryWordIndex = (queryWord, cognateArray, nonCognateArray) => {
     let arrayLength = cognateArray.length;
 
@@ -161,6 +199,14 @@ function App() {
   let [chosenWord, setChosenWord] = useState("");
   let [chosenWordNumber, setChosenWordNumber] = useState(0); //Returns the index of the chosenWord in the cognate/non-cognate array.
   let [chosenInstanceNumber] = useState(0); //Returns the index of the chosenWord in the four word array.
+
+  /**
+   * updateChosenWord handles the state for chosenWord.
+   * 
+   * Chooses a target session word and prevents duplication throughout the experiment.
+   * 
+   * @param {*} array 
+   */
   const updateChosenWord = (array) => { 
     
     chosenInstanceNumber = Math.floor(Math.random() * 4)
@@ -270,6 +316,9 @@ function App() {
   let [firstImageReference, setFirstImageReference] = useState(0);
   let [firstWord, setFirstWord] = useState("");
 
+  /**
+   *update FirstWord handles the state for firstWord and firstImageReference.
+   */
   const updateFirstWord = () => {
     let firstWordProxy = []
     firstWordProxy = getChosenWord()
@@ -286,6 +335,9 @@ function App() {
   let [secondImageReference, setSecondImageReference] = useState(0);
   let [secondWord, setSecondWord] = useState("");
 
+  /**
+   *updateSecondWord handles the state for secondWord and secondImageReference.
+   */  
   const updateSecondWord = () => {
     let secondWordProxy = []
     secondWordProxy = getChosenWord()
@@ -302,6 +354,9 @@ function App() {
   let [thirdImageReference, setThirdImageReference] = useState(0);
   let [thirdWord, setThirdWord] = useState("");
 
+  /**
+   *updateThirdWord handles the state for thirdWord and thirdImageReference.
+   */  
   const updateThirdWord = () => {
     let thirdImageProxy = []
     thirdImageProxy = getChosenWord()
@@ -318,6 +373,9 @@ function App() {
   let [fourthImageReference, setFourthImageReference] = useState(0)
   let [fourthWord, setFourthWord] = useState("");
 
+  /**
+   *updateFourthWord handles the state for fourthWord and fourthImageReference.
+   */  
   const updateFourthWord = () => {
     let fourthImageProxy = []
     fourthImageProxy = getChosenWord()
@@ -336,7 +394,11 @@ if(instanceCount!== 0){
 
   
   //Audio needs to be played as app loads then before the button press resets for the next word array.
-
+  /**
+   * update handles main session logic.
+   * 
+   * Sets all chosen words and corresponding images for stimuli presentation.
+   */
   const update = () => {
 
 
@@ -368,6 +430,10 @@ if(instanceCount!== 0){
     updateChosenWord(exclusionArray);
   }
 
+  /**
+   * instanceOne compiles update word logic implementation, image update implementation and session report generation 
+   * to present stimuli and record participant input when the session target word corresponds to picture one.
+   */
   const instanceOne = () => {
     //AUDIO[chosenWordNumber][0].play();
     //console.log("Audio number: " + AUDIO[chosenWordNumber][1])
@@ -385,9 +451,12 @@ if(instanceCount!== 0){
       alert("Thank you for participating in the study; you may now close this web page.")
     }
 
-
-
   }
+
+  /**
+   * instanceTwo compiles update word logic implementation, image update implementation and session report generation 
+   * to present stimuli and record participant input when the session target word corresponds to picture two.
+   */
   const instanceTwo = () => {
     //AUDIO[chosenWordNumber][0].play();
     //console.log("Audio number: " + AUDIO[chosenWordNumber][1])
@@ -405,6 +474,11 @@ if(instanceCount!== 0){
       alert("Thank you for participating in the study, you may now close this web page.")
     }
   }
+
+  /**
+   * instanceThree compiles update word logic implementation, image update implementation and session report generation 
+   * to present stimuli and record participant input when the session target word corresponds to picture three.
+   */
   const instanceThree = () => {
     //AUDIO[chosenWordNumber][0].play();
     //console.log("Audio number: " + AUDIO[chosenWordNumber][1])
@@ -422,6 +496,11 @@ if(instanceCount!== 0){
       alert("Thank you for participating in the study, you may now close this web page.")
     }
   }
+
+  /**
+   * instanceFour compiles update word logic implementation, image update implementation and session report generation 
+   * to present stimuli and record participant input when the session target word corresponds to picture four.
+   */
   const instanceFour = () => {
     //AUDIO[chosenWordNumber][0].play();
     //console.log("Audio number: " + AUDIO[chosenWordNumber][1])
@@ -440,6 +519,10 @@ if(instanceCount!== 0){
     }
   }
 
+  /**
+   * chooseFirstImageObject returns either the first or second image variant for a given first picture object.
+   * @returns img
+   */
   const chooseFirstImageObject = () => {
     let imageChoiceIndex = Math.floor(Math.random() * 2);
 
@@ -451,6 +534,10 @@ if(instanceCount!== 0){
 
   }
 
+  /**
+   * chooseSecondImageObject returns either returns the first or second image variant for a given second picture object.
+   * @returns img
+   */
   const chooseSecondImageObject = () => {
     let imageChoiceIndex = Math.floor(Math.random() * 2);
 
@@ -462,6 +549,10 @@ if(instanceCount!== 0){
 
   }
 
+  /**
+   * chooseThirdImageObject returns either the first or second image variant for a given third picture object.
+   * @returns img
+   */
   const chooseThirdImageObject = () => {
     let imageChoiceIndex = Math.floor(Math.random() * 2);
 
@@ -473,6 +564,10 @@ if(instanceCount!== 0){
 
   }
 
+  /**
+   * chooseFourthImageObject returns either the first or second image variant for a given fourth picture object.
+   * @returns img
+   */
   const chooseFourthImageObject = () => {
     let imageChoiceIndex = Math.floor(Math.random() * 2);
 
