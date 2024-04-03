@@ -1,3 +1,23 @@
+# Context
+
+The following script implements an auditory lexical decision task geared to examine English-Russian Cognate Facilitation
+in English speaking participants with no knowledge of Russian.
+
+A typical session involves 35 trials, 5 unscored and 30 scored target word presentations.
+
+By default the following stimuli will be presented:
+
+- 5 Random Trial Words for practice prior to scoring.
+
+- 15 English-Russian Cognate Words (with a chance of non-cognate English words)
+
+- 15 Non-Cognate Russian Words (with a chance of noncewords)
+
+The script was utilized to collect data for presentation at the 10th Annual Scarborough
+Undergraduate Linguistics Conference at the University of Toronto.
+
+To run the script, follow the Getting Started with Create React App guide below.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
